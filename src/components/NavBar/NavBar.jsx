@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import jwt_decode from "jwt-decode";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { mobile } from "../Responsive";
 
 const Container = styled.div`
   height: 65px;
@@ -9,6 +10,9 @@ const Container = styled.div`
   background-color: #010101;
   color: white;
   background-position: bottom;
+  ${mobile({
+    height: "50px",
+  })}
 `;
 const Wrapper = styled.div`
   padding: 0px 20px;
@@ -21,6 +25,9 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({
+    display: "none",
+  })}
 `;
 
 const Logo = styled.div`
@@ -38,6 +45,9 @@ const Center = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
+  ${mobile({
+    display: "none",
+  })}
 `;
 
 const Right = styled.div`
@@ -48,6 +58,11 @@ const Right = styled.div`
   justify-content: flex-end;
   position: relative;
   padding-right: 2rem;
+  ${mobile({
+    width: "100%",
+    height: "50px",
+    justifyContent: "center",
+  })}
 `;
 const MenuItems = styled.ul`
   list-style: none;
@@ -55,6 +70,10 @@ const MenuItems = styled.ul`
   justify-content: space-evenly;
   align-items: center;
   gap: 20px;
+  ${mobile({
+    width: "100%",
+    justifyContent: "space-between",
+  })}
 `;
 const List = styled.li`
   cursor: pointer;

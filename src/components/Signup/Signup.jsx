@@ -3,16 +3,25 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 import styled from "styled-components";
+import { mobile } from "../Responsive";
+import Swal from "sweetalert2";
 
 const Container = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #fea9a9;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+    url("https://i.ibb.co/jGNbP8M/final-dl-beatsnoop-com-k1w-Yai-RZE9.jpg");
+
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: 0.3s ease-in;
+  ${mobile({
+    height:"auto",
+    padding: "20px",
+    backgroundColor:"teal"
+  })}
 `;
 const Wrapper = styled.div`
   width: 900px;
@@ -21,9 +30,15 @@ const Wrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
     0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+    ${mobile({
+    height:"108vh",
+    width:"100%",
+    flexDirection: "column",
+  })}
+
 `;
 const Left = styled.div`
-  flex: 1;
+  flex: 1.4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,9 +46,19 @@ const Left = styled.div`
   background-color: #3bb19b;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  h1{
+
+  ${mobile({
+      borderTopRightRadius:"10px",
+      borderBottomLeftRadius:"0px",
+      flex:"0.5"
+    })}
+  h1 {
     font-weight: 800;
     margin-bottom: 30px;
+    ${mobile({
+      fontSize:"1.5rem",
+      margin:"20px 0"
+    })}
   }
 `;
 const Right = styled.div`
@@ -45,6 +70,10 @@ const Right = styled.div`
   background-color: white;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  ${mobile({
+      borderBottomLeftRadius:"10px",
+      borderTopRightRadius:"0px"
+    })}
 
   h1 {
     font-weight: 800;
@@ -73,6 +102,7 @@ const Signup = () => {
       navigate("/login");
       console.log(res.message);
     } catch (error) {
+      Swal.fire(`Signup Failed`)
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -96,7 +126,7 @@ const Signup = () => {
         </Left>
         <Right>
           <form className="form_container" onSubmit={handleSubmit}>
-            <h1>Create Account</h1>
+            <h1 id="heading-2">Create Account</h1>
             <input
               type="text"
               placeholder="First Name"
@@ -137,7 +167,7 @@ const Signup = () => {
               className="input"
               autoComplete="off"
             />
-            {error && <div className="error_msg">{error}</div>}
+            {error && <div id="err" className="error_msg">{error}</div>}
             <button type="submit" className="green_btn">
               Sign Up
             </button>

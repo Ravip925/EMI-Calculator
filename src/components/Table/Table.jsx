@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../Responsive";
 import "./Table.css";
 
 const Container = styled.div`
@@ -15,6 +16,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  ${mobile({
+    width: "100%",
+    padding: "20px",
+  })}
 `;
 
 const Table = ({ EMI_table }) => {
@@ -25,7 +30,7 @@ const Table = ({ EMI_table }) => {
           <Wrapper>
             <table>
               <thead>
-                <tr class="thead">
+                <tr className="thead">
                   <th scope="col">Month</th>
                   <th scope="col">EMI</th>
                 </tr>
