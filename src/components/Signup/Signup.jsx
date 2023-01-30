@@ -68,7 +68,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://authenticate-api.vercel.app/api/users";
+      const url = "https://emi-api-545v.onrender.com/api/users";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
       console.log(res.message);
